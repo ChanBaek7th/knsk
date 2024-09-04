@@ -27,8 +27,7 @@ function is_checked(name="") {
     }
   }
   
-  if (name != "") {
-    console.log("dddd")
+  if (name != "") {    
     name_list += name + ", "
     add_cnt++;
   }
@@ -45,9 +44,7 @@ function is_checked(name="") {
   document.getElementById("result-area").innerHTML = attend_str;
 }
 
-function add() {
-  console.log("add")
-  console.log(document.getElementById("add-area").value)
+function add() {  
   is_checked(document.getElementById("add-area").value)
   document.getElementById("add-area").innerHTML = ""
 }
