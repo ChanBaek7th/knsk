@@ -12,8 +12,9 @@ document.getElementById("date").innerHTML = year + "년 " + date_str;
 
 const listItems = document.getElementById("attend").getElementsByTagName("li");
 // console.log(listItems);
-
-function is_checked() {
+name_list = ""
+add_cnt = 0
+function is_checked(name="") {
   let attend_str = date_str + ` 아침 출석현황입니다. &#10;&#10;`;
   let cnt = 0;
   for (i = 0; i < listItems.length; i++) {
@@ -25,7 +26,15 @@ function is_checked() {
         listItems[i].getElementsByClassName("name")[0].innerText + ", ";
     }
   }
+  
+  if (name != "") {
+    console.log("dddd")
+    name_list += name + ", "
+    add_cnt++;
+  }
+  attend_str += name_list
   attend_str = attend_str.replace(/,\s*$/, "");
+  cnt += add_cnt
   attend_str += "(이상 " + cnt + "명)";
   if (document.getElementById("kancho").checked) {
     attend_str += " + 관장님";
@@ -34,6 +43,13 @@ function is_checked() {
   attend_str += "&#10;https://chanbaek7th.github.io/knsk";
 
   document.getElementById("result-area").innerHTML = attend_str;
+}
+
+function add() {
+  console.log("add")
+  console.log(document.getElementById("add-area").value)
+  is_checked(document.getElementById("add-area").value)
+  document.getElementById("add-area").innerHTML = ""
 }
 
 function copy() {
